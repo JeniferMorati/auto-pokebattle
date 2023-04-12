@@ -16,21 +16,21 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.jenifermorati.weatherforecast"
+      "bundleIdentifier": "com.jenifermorati.expo-pokedex"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.jenifermorati.weatherforecast"
+      "package": "com.jenifermorati.expopokedex"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "0d593e02-a03d-490b-b3da-75a414e2201f"
+        "projectId": "fd3b66b6-5cdb-455c-a66f-921d62866491"
       }
     },
     "owner": "jenifermorati"

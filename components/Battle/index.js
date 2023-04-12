@@ -67,8 +67,8 @@ const BattleComponent = ({ pokemons, setDuel }) => {
         {battleResult && (
           <SafeAreaView>
             <ScrollView scrollEnabled>
-              {battleResult?.log?.map((log) => (
-                <RenderBattleLog item={log} />
+              {battleResult?.log?.map((log, index) => (
+                <RenderBattleLog key={`${log}-${index}`} item={log} />
               ))}
             </ScrollView>
           </SafeAreaView>
