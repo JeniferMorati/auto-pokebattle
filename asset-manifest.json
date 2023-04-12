@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/auto-pokebattle/static/js/main.88505590.js",
+    "static/js/523.a50e249b.js": "/auto-pokebattle/static/js/523.a50e249b.js",
+    "favicon.ico": "/auto-pokebattle/favicon.ico",
+    "index.html": "/auto-pokebattle/index.html",
+    "favicon-32.png": "/auto-pokebattle/favicon-32.png",
+    "favicon-16.png": "/auto-pokebattle/favicon-16.png",
+    "manifest.json": "/auto-pokebattle/manifest.json",
+    "serve.json": "/auto-pokebattle/serve.json",
+    "main.88505590.js.map": "/auto-pokebattle/static/js/main.88505590.js.map",
+    "523.a50e249b.js.map": "/auto-pokebattle/static/js/523.a50e249b.js.map"
+  },
+  "entrypoints": [
+    "static/js/523.a50e249b.js",
+    "static/js/main.88505590.js"
+  ]
+}
