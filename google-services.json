@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "968244418256",
+    "project_id": "inter-world-1efa5",
+    "storage_bucket": "inter-world-1efa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968244418256:android:aeebf290ec6c0658dd30d5",
+        "android_client_info": {
+          "package_name": "interworld.fe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968244418256-6a9l47gn6dls6dkbsvm67kim8tokjaki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhx6IiEUYqtGKRKLhIW2Eh98ILmXTYpJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968244418256-6a9l47gn6dls6dkbsvm67kim8tokjaki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
