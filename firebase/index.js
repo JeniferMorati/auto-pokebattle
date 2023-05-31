@@ -219,6 +219,10 @@ class FirebaseAuth {
         return null;
     }
   }
+
+  signOut = async () => {
+    await this.appAuth.signOut();
+  };
 }
 
 export default FirebaseAuth;

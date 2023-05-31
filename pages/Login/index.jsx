@@ -12,11 +12,10 @@ import {
   Row,
   Box,
 } from "native-base";
-
-const firebaseProvider = new FirebaseAuth();
+import { useMainContext } from "../../context/main";
 
 const LoginScreen = () => {
-  const navigation = useNavigation();
+  const { authProvider } = useMainContext();
   const [errorMessage, setErrorMesssage] = useState("");
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -26,12 +25,11 @@ const LoginScreen = () => {
     setLoading(true);
     setErrorMesssage(false);
     const authParams = {
-      auth: firebaseProvider.appAuth,
+      auth: authProvider.appAuth,
       email,
       password,
       onSuccess: () => {
         setLoading(false);
-        navigation.navigate("Arena");
       },
       onError: (err) => {
         setLoading(false);
@@ -77,14 +75,14 @@ const LoginScreen = () => {
         <Button
           bgColor="pink.300"
           w="full"
-          onPress={() => firebaseProvider.handleLogin(handleAuth())}
+          onPress={() => authProvider.handleLogin(handleAuth())}
         >
           <Text color="black">Login</Text>
         </Button>
         <Button
           bgColor="pink.300"
           w="full"
-          onPress={() => firebaseProvider.handleCreateAccount(handleAuth())}
+          onPress={() => authProvider.handleCreateAccount(handleAuth())}
         >
           <Text>Criar conta</Text>
         </Button>

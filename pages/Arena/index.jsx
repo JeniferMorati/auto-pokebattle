@@ -3,12 +3,14 @@ import { View } from "react-native";
 import { Button } from "react-native-web";
 import { listAllPokemons, listAllPokemonsByPage } from "../../services/list";
 import { searchOne } from "../../services/search";
-import Search from "../../components/Search";
+import Header from "../../components/Header";
 import List from "../../components/List";
 import BattleComponent from "../../components/Battle";
 import { Center, Box } from "native-base";
+import { useMainContext } from "../../context/main";
 
 export default function Arena() {
+  const { authProvider } = useMainContext();
   const [pageUrl, setPageUrl] = useState("");
   const [pokeDuel, setPokeDuel] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -63,14 +65,15 @@ export default function Arena() {
 
   return (
     <Center bgColor="pink.200" py="32">
-      <Search
+      <Header
         handleSearch={handleSearch}
         handleTextChange={handleTextChange}
         pokemonSearch={pokemonSearch}
         searchText={searchText}
         handleSelectedToDuel={handleSelectedToDuel}
+        handleSignOut={authProvider.signOut}
       />
-      <Box w="full" alignItems="center" maxW="2xl" >
+      <Box w="full" alignItems="center" maxW="2xl">
         <List
           isLoading={isLoading}
           pokemonList={pokemonList}
