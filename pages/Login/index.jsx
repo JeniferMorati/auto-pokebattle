@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FirebaseAuth } from "../../firebase";
+import FirebaseAuth from "../../firebase";
 import { useNavigation } from "@react-navigation/native";
 import {
   Heading,
@@ -10,6 +10,7 @@ import {
   Text,
   Spinner,
   Row,
+  Box,
 } from "native-base";
 
 const firebaseProvider = new FirebaseAuth();
@@ -44,7 +45,7 @@ const LoginScreen = () => {
   return (
     <Center px="4" alignItems="center" justifyContent="center" minH="full">
       <VStack space={3} w="full" maxW="lg">
-        <Heading>Bem vindo de volta!</Heading>
+        <Heading>Bem vindo!</Heading>
         <Input
           w="full"
           placeholder="Email"
@@ -58,19 +59,21 @@ const LoginScreen = () => {
           onChangeText={setPassword}
           secureTextEntry
         />
-        {loading && (
-          <Row
-            w="full"
-            space={2}
-            alignItems="center"
-            justifyContent="start"
-            flexDirection="row"
-          >
-            <Spinner color="pink.500" />
-            <Text color="gray.600">Carregando...</Text>
-          </Row>
-        )}
-        {errorMessage && <Text color="red.500">{errorMessage}</Text>}
+        <Box minH="6">
+          {loading && (
+            <Row
+              w="full"
+              space={2}
+              alignItems="center"
+              justifyContent="start"
+              flexDirection="row"
+            >
+              <Spinner color="pink.500" />
+              <Text color="gray.600">Carregando...</Text>
+            </Row>
+          )}
+          {errorMessage && <Text color="red.500">{errorMessage}</Text>}
+        </Box>
         <Button
           bgColor="pink.300"
           w="full"
