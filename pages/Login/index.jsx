@@ -1,27 +1,45 @@
 import React, { useState } from "react";
-import { getAuth } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import firebaseConfig from "../../firebase";
+import { FirebaseAuth } from "../../firebase";
 import { useNavigation } from "@react-navigation/native";
-import { handleLogin } from "../../services/login";
-import { handleCreateAccount } from "../../services/register";
-import { Heading, Input, Button, Center, VStack, Text } from "native-base";
+import {
+  Heading,
+  Input,
+  Button,
+  Center,
+  VStack,
+  Text,
+  Spinner,
+  Row,
+} from "native-base";
+
+const firebaseProvider = new FirebaseAuth();
 
 const LoginScreen = () => {
   const navigation = useNavigation();
+  const [errorMessage, setErrorMesssage] = useState("");
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const firebaseApp = initializeApp(firebaseConfig);
-  const auth = getAuth(firebaseApp);
 
-  const handleAuth = () => ({
-    auth,
-    email,
-    password,
-    callback: () => {
-      navigation.navigate("Arena");
-    },
-  });
+  const handleAuth = () => {
+    setLoading(true);
+    setErrorMesssage(false);
+    const authParams = {
+      auth: firebaseProvider.appAuth,
+      email,
+      password,
+      onSuccess: () => {
+        setLoading(false);
+        navigation.navigate("Arena");
+      },
+      onError: (err) => {
+        setLoading(false);
+        setErrorMesssage(err);
+      },
+    };
+
+    return authParams;
+  };
 
   return (
     <Center px="4" alignItems="center" justifyContent="center" minH="full">
@@ -40,17 +58,30 @@ const LoginScreen = () => {
           onChangeText={setPassword}
           secureTextEntry
         />
+        {loading && (
+          <Row
+            w="full"
+            space={2}
+            alignItems="center"
+            justifyContent="start"
+            flexDirection="row"
+          >
+            <Spinner color="pink.500" />
+            <Text color="gray.600">Carregando...</Text>
+          </Row>
+        )}
+        {errorMessage && <Text color="red.500">{errorMessage}</Text>}
         <Button
           bgColor="pink.300"
           w="full"
-          onPress={() => handleLogin(handleAuth())}
+          onPress={() => firebaseProvider.handleLogin(handleAuth())}
         >
           <Text color="black">Login</Text>
         </Button>
         <Button
           bgColor="pink.300"
           w="full"
-          onPress={() => handleCreateAccount(handleAuth())}
+          onPress={() => firebaseProvider.handleCreateAccount(handleAuth())}
         >
           <Text>Criar conta</Text>
         </Button>
